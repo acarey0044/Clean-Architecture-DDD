@@ -2,7 +2,7 @@ using System;
 
 namespace Clean.Architecture.Ddd.Web
 {
-    public class WeatherForecast
+    public class WeatherForecast //test
     {
         public DateTime Date { get; set; }
 

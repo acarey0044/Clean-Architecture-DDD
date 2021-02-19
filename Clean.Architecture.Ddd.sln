@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Ddd.Web", "Clean.Architecture.Ddd.Web\Clean.Architecture.Ddd.Web.csproj", "{735CD938-60FB-46B3-B0FC-A393411FD568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Ddd.Web", "Clean.Architecture.Ddd.Web\Clean.Architecture.Ddd.Web.csproj", "{735CD938-60FB-46B3-B0FC-A393411FD568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Ddd.Application", "Clean.Architecture.Ddd.Application\Clean.Architecture.Ddd.Application.csproj", "{AEC37F2A-EF4D-45E7-8AF7-95062C0A8564}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.Architecture.Ddd.Application", "Clean.Architecture.Ddd.Application\Clean.Architecture.Ddd.Application.csproj", "{AEC37F2A-EF4D-45E7-8AF7-95062C0A8564}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Architecture.Ddd.Infrastructure", "Clean.Architecture.Ddd.Infrastructure\Clean.Architecture.Ddd.Infrastructure.csproj", "{B46E53D6-4555-4C87-BE83-625B69072663}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AEC37F2A-EF4D-45E7-8AF7-95062C0A8564}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEC37F2A-EF4D-45E7-8AF7-95062C0A8564}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEC37F2A-EF4D-45E7-8AF7-95062C0A8564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46E53D6-4555-4C87-BE83-625B69072663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46E53D6-4555-4C87-BE83-625B69072663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46E53D6-4555-4C87-BE83-625B69072663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46E53D6-4555-4C87-BE83-625B69072663}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

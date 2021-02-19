@@ -1,11 +1,17 @@
 using Autofac;
 using Clean.Architecture.Ddd.Application;
+using Clean.Architecture.Ddd.Infrastructure.Identity;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Clean.Architecture.Ddd.Web
 {
@@ -21,7 +27,37 @@ namespace Clean.Architecture.Ddd.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(opts =>
+            {
+                opts.MinimumSameSitePolicy = SameSiteMode.Strict;
+            });
+            services.ConfigureApplicationCookie(opts =>
+            {
+                opts.Cookie.HttpOnly = true;
+                opts.ExpireTimeSpan = TimeSpan.FromHours(1);
+                opts.LoginPath = "/Account/Login";
+                opts.LogoutPath = "/Account/Logout";
+                opts.Cookie = new CookieBuilder
+                {
+                    IsEssential = true
+                };
+            });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(opts =>
+                {
+                    opts.Cookie.HttpOnly = true;
+                    opts.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                    opts.Cookie.SameSite = SameSiteMode.Lax;
+                });
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultTokenProviders();
             services.AddControllers();
+        }
+
+        public void AddDbContexts(IServiceCollection services)
+        {
+            services.AddDbContext<IdentityContext>(opts => opts.UseInMemoryDatabase("Identity"));
         }
 
         public void AddMediatr(ContainerBuilder builder)
